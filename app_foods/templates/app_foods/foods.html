@@ -1,0 +1,29 @@
+{% extends 'app_general/components/base.html' %}
+{% load static %}
+
+{% block site_title %} All Menu | {% endblock %}
+
+{% block content %}
+<section class ="content-section content-section-single">
+    <div class="content-container">
+        <h2 class="content-title">Menu</h2>
+        {% if foods.count > 0 %}
+            <div class="grid grid-3">
+                {%for food in foods %}
+            <div class="menu">
+                <a href ="{% url 'food' food.id %}">
+                    <img class="image-block" src ="{% static food.image_relative_url %}">
+                </a>
+                <h5 class="food-title">
+                    <a href ="{% url 'food' food.id %}">{{ food.title }}</a>
+                </h5>
+                <p>{{ food.price }} บาท </p>
+            </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p> no </p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

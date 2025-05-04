@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block site_title %}{% endblock %}To you</title>
+    <link rel="icon" href="{% static 'app_general/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'app_general/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'app_general/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'app_general/components/site_header.html' %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% include 'app_general/components/site_footer.html' %}
+</body>
+</html>

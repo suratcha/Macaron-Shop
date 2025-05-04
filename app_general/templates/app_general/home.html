@@ -1,0 +1,31 @@
+{% extends 'app_general/components/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="home-landing-section">
+    <h1>Welcome To Macaron To You shop</h1>
+    <p>
+        ร้านของเราจำหน่ายมาคารองโฮมเมด ทำจากวัตถุดิบคุณภาพ รสชาติหอมหวาน อร่อยลงตัว <br>มีให้เลือกหลากหลายรสชาติ ลองเลือกชมสินค้าและสั่งซื้อได้เลย
+    </p>
+    <a class="button" href="{% url 'foods' %}">All Menu</a>
+    <div class ="grid grid-2">
+        <img class="image-block" src="{% static 'app_general/home2.JPG' %}">
+        <img class="image-block" src="{% static 'app_general/home.JPG' %}">
+    </div>
+</section>
+<section class="content-section">
+    <div class ="content-container">
+        <h2 class="content-title text-center">Recommend Menu</h2>
+        <div class ="grid grid-3">
+            {% for food in recommended_foods %}
+                <a href="{% url 'food' food.id %}" class="recommend-box">
+                    <img class="image-block" src ="{% static food.image_relative_url %}">
+                    <h4 class="recommend-title">{{ food.title }}</h4>
+                </a>
+            {% empty %}
+                <p class="text-center">ยังไม่มีเมนูแนะนำ</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

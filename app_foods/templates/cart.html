@@ -1,0 +1,29 @@
+{% extends 'app_general/components/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="cart-title">Your Cart 🛒</h2>
+{% if items %}
+  <div class="cart-container">
+    {% for item in items %}
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <h3>{{ item.food.title }}</h3>
+        <p class="label">Quantity : {{ item.quantity }}</p>
+        <p class="label">Total : {{ item.subtotal }} บาท</p>
+      </div>
+      <div class="cart-item-actions">
+        <a href="{% url 'increment_cart' item.food.id %}">➕</a>
+        <a href="{% url 'decrement_cart' item.food.id %}">➖</a>
+        <a href="{% url 'remove_from_cart' item.food.id %}">🗑️</a>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="cart-total">
+      <strong>Total : {{ total }} ฿</strong>
+    </div>
+  </div>
+{% else %}
+  <p class="empty-cart">ยังไม่มีสินค้าในตะกร้า</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load static %}
+<header class="site-header">
+    <div class="site-header-left">
+        <div class="site-header-items site-header-brand">
+            <img src = "{% static 'app_general/logo.PNG' %}">
+            <span class='logo-text'>Macaron To You</span>
+        </div>
+    </div>
+    <div class="site-header-right">
+        <a class="site-header-item" href = "{% url 'home' %}">Home</a>
+        <a class="site-header-item" href="{% url 'foods'%}">Menu</a>
+        <a class="site-header-item" href="{% url 'view_cart' %}">Cart</a>
+    </div>
+</header>
